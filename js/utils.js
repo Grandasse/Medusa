@@ -51,4 +51,5 @@ function createContainers() {
     //   for (var i = 0; i < dataVideo.length; i++) {
     // fillContainer(dataVideo[i], mVues, mTime, document.querySelector('#container2'), i)
     //   }
+    document.querySelector('#date').innerHTML += SCRAP_DATE
 }

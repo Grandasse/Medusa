@@ -1,5 +1,4 @@
-// DATA
-// 17/02/24
+const SCRAP_DATE = "17/02/2024"
 const maxVues = 580000
 const maxTime = 12750
 const parsedData = [
