@@ -1,0 +1,40 @@
+html {
+    font-family: sans-serif;
+}
+
+.bloc {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.vues,
+.time {
+    height: 15px;
+    background: #9a9aff;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 12px;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+.time {
+    background: #ff9a9a;
+    color: black;
+}
+
+.nb {
+    min-width: 30px;
+    text-align: center;
+    align-self: center;
+}
+
+.data {
+    min-width: 40%;
+    background: #eee;
+}
