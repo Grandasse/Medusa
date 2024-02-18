@@ -7,6 +7,11 @@ html {
     height: 30px;
     width: 100%;
     border: 1px solid black;
+    border-bottom: none;
+}
+
+.bloc:nth-last-child() {
+    border-bottom: 1px solid black;
 }
 
 .vues,
