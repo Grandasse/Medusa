@@ -5,14 +5,14 @@ function addIfMore(acc, v) {
     return acc
 }
 
-function fillContainer(pdata, maxV, maxT, c, i) {
-    let perVue = pdata.total * 100 / parsedData.map(d => d.total).reduce(addIfMore, 0);
-    let perTime = pdata.sec * 100 / parsedData.map(d => d.sec).reduce(addIfMore, 0);
+function fillContainer(pdata, c, i) {
+    let perVue = pdata.vues * 100 / MAX_VUES;
+    let perTime = pdata.time * 100 / MAX_TIME;
     if (perVue > 100) {
-        console.log(i, perVue, pdata, pdata.total, maxV);
+        console.log(i, perVue, pdata, pdata.total, MAX_VUES);
     }
     if (perTime > 100) {
-        console.log(i, perTime, pdata, pdata.sec, maxT);
+        console.log(i, perTime, pdata, pdata.sec, MAX_TIME);
     }
     let vues = document.createElement('div');
     let time = document.createElement('div');
@@ -29,8 +29,8 @@ function fillContainer(pdata, maxV, maxT, c, i) {
 
     vues.style.width = `${perVue}%`;
     time.style.width = `${perTime}%`;
-    vues.innerHTML = pdata.vues.replace('de', ''); //corrige '___Mde'
-    time.innerHTML = pdata.time;
+    vues.innerHTML = pdata.rawVues.replace('de', ''); //corrige '___Mde'
+    time.innerHTML = pdata.rawTime;
     title.innerHTML = pdata.title;
     nb.innerHTML = i;
 
@@ -44,12 +44,18 @@ function fillContainer(pdata, maxV, maxT, c, i) {
 
 function createContainers() {
 
-    for (let i = 0; i < parsedData.length; i++) {
-        fillContainer(parsedData[i], maxVues, maxTime, document.querySelector('#container'), i)
+    for (let i = 0; i < dataDirect.length; i++) {
+        fillContainer(dataDirect[i], document.querySelector('#directs'), dataDirect.length - i);
     }
 
-    //   for (var i = 0; i < dataVideo.length; i++) {
-    // fillContainer(dataVideo[i], mVues, mTime, document.querySelector('#container2'), i)
-    //   }
-    document.querySelector('#date').innerHTML += SCRAP_DATE
+    for (var i = 0; i < dataVideo.length; i++) {
+        fillContainer(dataVideo[i], document.querySelector('#videos'), dataVideo.length - i);
+    }
+    document.querySelector('#date').innerHTML += SCRAP_DATE;
+}
+
+function computeMaxes() {
+    let fullData = dataDirect.concat(dataVideo).map(x => ({ v: x.vues, t: x.time }));
+    MAX_TIME = fullData.map(d => d.t).reduce(addIfMore, 0);
+    MAX_VUES = fullData.map(d => d.v).reduce(addIfMore, 0);
 }

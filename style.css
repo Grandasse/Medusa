@@ -10,7 +10,11 @@ html {
     border-bottom: none;
 }
 
-.bloc:nth-last-child() {
+#videos:last-child {
+    border-bottom: 1px solid black;
+}
+
+#directs:last-child {
     border-bottom: 1px solid black;
 }
 
@@ -20,6 +24,12 @@ html {
     background: #9a9aff;
     font-size: 10px;
     font-weight: bold;
+}
+
+.title-bloc {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .title {

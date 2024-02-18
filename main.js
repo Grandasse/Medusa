@@ -1,1 +1,2 @@
+computeMaxes();
 createContainers();
