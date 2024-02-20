@@ -39,4 +39,4 @@ for (let i = 0; i < all.length - 1; i++) {
     maxVues = total;
   }
 }
-console.log(res, maxTime, maxVues);
+console.log(res, maxTime, maxVues, JSON.stringify(res));

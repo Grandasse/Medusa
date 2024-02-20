@@ -59,3 +59,38 @@ function computeMaxes() {
     MAX_TIME = fullData.map(d => d.t).reduce(addIfMore, 0);
     MAX_VUES = fullData.map(d => d.v).reduce(addIfMore, 0);
 }
+
+function nameInList(name, list) {
+    return list.map(l => l.name).indexOf(name)
+}
+
+function addName(name, n) {
+    let newName = { name, nb: 1 };
+    n.push(newName);
+}
+
+function countNames(names) {
+    let n = []; // { name: "", nb: 0 }
+    for (let name of names) {
+        let idx = nameInList(name, n);
+        if (idx >= 0) {
+            n[idx].nb++;
+        } else {
+            addName(name, n);
+        }
+    }
+    return n.sort((a, b) => b.nb - a.nb);
+}
+
+function displayIntervenantes() {
+    let ul = document.createElement('ul');
+    // afficher la liste des noms en guise de test
+    let names = interventions.map(i => i.name);
+    names = countNames(names);
+    for (let n of names) {
+        let li = document.createElement('li');
+        li.innerHTML = `${n.nb}× ${n.name}`;
+        ul.appendChild(li)
+    }
+    document.querySelector('#intervenantes').appendChild(ul)
+};
