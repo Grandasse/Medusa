@@ -79,7 +79,7 @@ function countNames(names) {
             addName(name, n);
         }
     }
-    return n.sort((a, b) => b.nb - a.nb);
+    return n.sort((a, b) => b.nb - a.nb || a.name.localeCompare(b.name));
 }
 
 function displayIntervenantes() {
