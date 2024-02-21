@@ -83,14 +83,33 @@ function countNames(names) {
 }
 
 function displayIntervenantes() {
-    let ul = document.createElement('ul');
-    // afficher la liste des noms en guise de test
+    let tbody = document.querySelector('#int-data');
+
+    // noms direct
     let names = interventions.map(i => i.name);
     names = countNames(names);
-    for (let n of names) {
-        let li = document.createElement('li');
-        li.innerHTML = `${n.nb}× ${n.name}`;
-        ul.appendChild(li)
+    // noms videos
+    let namesVideos = interventionsVideos.map(i => i.name)
+    namesVideos = countNames(namesVideos)
+
+    // ALL interventions
+    let allNames = interventions.concat(interventionsVideos).map(i => i.name);
+    allNames = countNames(allNames);
+    for (let name of allNames) {
+        let tr = document.createElement('tr');
+        let direct = document.createElement('td');
+        let video = document.createElement('td');
+        let cumul = document.createElement('td');
+        let nom = document.createElement('td');
+        direct.innerHTML = names.find(i => i.name === name.name) ? names.find(i => i.name === name.name).nb + '×' : '';
+        video.innerHTML = namesVideos.find(i => i.name === name.name) ? namesVideos.find(i => i.name === name.name).nb + '×' : '';
+        cumul.innerHTML = name.nb + '×';
+        nom.innerHTML = name.name;
+
+        tr.appendChild(direct);
+        tr.appendChild(video);
+        tr.appendChild(cumul);
+        tr.appendChild(nom);
+        tbody.appendChild(tr);
     }
-    document.querySelector('#intervenantes').appendChild(ul)
 };
