@@ -17,10 +17,10 @@ function convertVues(string) {
   }
   return string;
 }
-var res = [], maxTime = 0, maxVues = 0;
+var res = [];
 var all = document.getElementsByTagName('ytd-rich-item-renderer');
 for (let i = 0; i < all.length - 1; i++) {
-  console.info(i, all[i].querySelectorAll('.ytd-thumbnail-overlay-time-status-renderer')[1].textContent.replace(/(^\n\s+)|(\n)/gi, ''), all[i].querySelectorAll('.inline-metadata-item')[0].textContent.replace(/(vues)|(\s)/gi, ''));
+  // console.info(i, all[i].querySelectorAll('.ytd-thumbnail-overlay-time-status-renderer')[1].textContent.replace(/(^\n\s+)|(\n)/gi, ''), all[i].querySelectorAll('.inline-metadata-item')[0].textContent.replace(/(vues)|(\s)/gi, ''));
   var time = all[i].querySelectorAll('.ytd-thumbnail-overlay-time-status-renderer')[1].textContent.replace(/(^\n\s+)|(\n)/gi, '');
   var vues = all[i].querySelectorAll('.inline-metadata-item')[0].textContent.replace(/(vues)|(\s)/gi, '');
   var sec = convertInSec(time);
@@ -32,11 +32,7 @@ for (let i = 0; i < all.length - 1; i++) {
     time: sec,
     vues: total
   })
-  if (maxTime < sec) {
-    maxTime = sec;
-  }
-  if (maxVues < total) {
-    maxVues = total;
-  }
 }
-console.log(res, maxTime, maxVues, JSON.stringify(res));
+console.log(res, JSON.stringify(res));
+
+window.prompt("Copy to clipboard: Ctrl+C, Enter", window.location.href + '%' + JSON.stringify(res));
