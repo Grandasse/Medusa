@@ -1,3 +1,5 @@
+let ALL_NAMES = [];
+
 const econoclastes = [
     "Philippe Béchade",
     "Pierre Sabatier",
@@ -2111,6 +2113,12 @@ let interventions = [
         id: 326,
         title: "Économie : le mensonge face à la réalité ? Marc Touati [EN DIRECT]",
         name: "Marc Touati",
+        gender: "M",
+    },
+    {
+        id: 327,
+        title: "Rendre compte des catastrophes énergétiques et humanitaires ? Quentin Müller [EN DIRECT]",
+        name: "Quentin Müller",
         gender: "M",
     },
 ];

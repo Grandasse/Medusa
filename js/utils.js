@@ -73,25 +73,30 @@ function nameInList(name, list) {
     return list.map((l) => l.name).indexOf(name);
 }
 
-function addName(name, n) {
-    let newName = { name, nb: 1 };
+function findGender(name) {
+    let allNames = interventions.concat(interventionsVideos);
+    return allNames.find((o) => o.name === name).gender;
+}
+
+function addName(name, n, gender) {
+    let newName = { name, nb: 1, gender };
     n.push(newName);
 }
 
 function countNames(names) {
-    let n = []; // { name: "", nb: 0 }
+    let n = []; // { name: "", nb: 0, gender: "" }
     for (let name of names) {
         let idx = nameInList(name, n);
         if (idx >= 0) {
             n[idx].nb++;
         } else {
-            addName(name, n);
+            addName(name, n, findGender(name));
         }
     }
     return n.sort((a, b) => b.nb - a.nb || a.name.localeCompare(b.name));
 }
 
-function isEconoclaste(name, econclastes) {
+function isEconoclaste(name) {
     return !econoclastes.includes(name);
 }
 
@@ -107,8 +112,8 @@ function displayIntervenantes() {
 
     // ALL interventions
     let allNames = interventions.concat(interventionsVideos).map((i) => i.name);
-    allNames = countNames(allNames);
-    for (let name of allNames) {
+    ALL_NAMES = [...countNames(allNames)];
+    for (let name of ALL_NAMES) {
         let tr = document.createElement("tr");
         let direct = document.createElement("td");
         let video = document.createElement("td");
