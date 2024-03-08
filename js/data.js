@@ -1,4 +1,4 @@
-const SCRAP_DATE = "22/02/2024";
+const SCRAP_DATE = "09/03/2024";
 let MAX_VUES = 0;
 let MAX_TIME = 0;
 
