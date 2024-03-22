@@ -2121,6 +2121,30 @@ let interventions = [
         name: "Quentin Müller",
         gender: "M",
     },
+    {
+        id: 328,
+        title: "Animateur télé et show-business ? Valérie Damidot [EN DIRECT]",
+        name: "Valérie Damidot",
+        gender: "F",
+    },
+    {
+        id: 329,
+        title: "Les Hackers face aux cyberguerres ? Bluetouff, Fabrice Epelboin et Marc-Antoine Ledieu [EN DIRECT]",
+        name: "Olivier Laurelli",
+        gender: "M",
+    },
+    {
+        id: 330,
+        title: "Les Hackers face aux cyberguerres ? Bluetouff, Fabrice Epelboin et Marc-Antoine Ledieu [EN DIRECT]",
+        name: "Fabrice Epelboin",
+        gender: "M",
+    },
+    {
+        id: 331,
+        title: "Les Hackers face aux cyberguerres ? Bluetouff, Fabrice Epelboin et Marc-Antoine Ledieu [EN DIRECT]",
+        name: "Marc-Antoine Ledieu",
+        gender: "M",
+    },
 ];
 
 const interventionsVideos = [
